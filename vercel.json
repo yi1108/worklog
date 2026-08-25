@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm hexo generate",
+  "outputDirectory": "public",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/(.*)\\.(css|js|png|jpg|jpeg|gif|svg|woff2?|ttf|eot)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

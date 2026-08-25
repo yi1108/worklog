@@ -12,8 +12,8 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
-url: https://yi1108.github.io/worklog
-root: /worklog/
+url: https://worklog-yi1108.vercel.app
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -81,9 +81,3 @@ ignore:
 
 # Extensions
 theme: fluid
-
-# Deployment
-deploy:
-  type: git
-  repo: https://github.com/yi1108/worklog.git
-  branch: gh-pages
