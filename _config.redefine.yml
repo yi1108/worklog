@@ -226,6 +226,12 @@ navbar:
     项目:
       path: /projects
       icon: fa-regular fa-folder-tree
+    分类:
+      path: /categories
+      icon: fa-regular fa-folder-tree
+    标签:
+      path: /tags
+      icon: fa-regular fa-tags
     归档:
       path: /archives
       icon: fa-regular fa-archive
@@ -235,9 +241,11 @@ navbar:
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
     # Whether to enable
-    enable: false
+    enable: true
     # Preload search data when the page loads
     preload: true
+    # Trigger mode: auto / click / movable
+    trigger: auto
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
