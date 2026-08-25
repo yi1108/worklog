@@ -218,7 +218,10 @@
    "project": "PRINTFILM",
    "shipped": true,
    "modules": [
-    "Agent Skill"
+    "Agent Skill",
+    "功能完善",
+    "基建部署",
+    "合规备案"
    ],
    "items": [
     {
@@ -227,6 +230,48 @@
      "commit": "已部署，待 commit",
      "shipped": true,
      "status": "已上线"
+    },
+    {
+     "module": "功能完善",
+     "text": "PRINTFILM 功能完善与体验优化",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "基建部署",
+     "text": "MiniMax H3 + ComfyUI 本地部署与测试验证",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "合规备案",
+     "text": "大模型备案 gitvv 调整与配置更新",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "功能完善",
+     "text": "PRINTFILM 功能完善与体验优化",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "基建部署",
+     "text": "MiniMax H3 + ComfyUI 本地部署与测试验证",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "合规备案",
+     "text": "大模型备案 gitvv 调整与配置更新",
+     "commit": "-",
+     "shipped": false,
+     "status": "进行中"
     }
    ],
    "commits": [
@@ -241,10 +286,22 @@
   {
    "name": "PRINTFILM",
    "days": 4,
-   "items": 18,
+   "items": 24,
    "commits": 12,
    "releases": 20,
    "modules": [
+    {
+     "name": "功能完善",
+     "count": 2
+    },
+    {
+     "name": "合规备案",
+     "count": 2
+    },
+    {
+     "name": "基建部署",
+     "count": 2
+    },
     {
      "name": "Agent Skill",
      "count": 1
