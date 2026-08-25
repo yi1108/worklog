@@ -1,4 +1,7 @@
-<% var s = worklog_stats(); var mods = worklog_modules(10); %>
+<% var s = worklog_stats();
+   var mods = worklog_modules(10);
+   var projects = worklog_projects();
+   var ov = worklog_overview(); %>
 <section class="dash wrap">
   <div class="dash-head">
     <h1>工作面板</h1>
@@ -7,10 +10,16 @@
     <% } else { %>
       <p class="dash-sub">还没有周报数据</p>
     <% } %>
+    <nav class="dash-jump">
+      <a href="<%- url_for('/board/') %>">模块看板</a>
+      <a href="<%- url_for('/timeline/') %>">时间线</a>
+      <a href="<%- url_for('/projects/') %>">项目总览</a>
+    </nav>
   </div>
 
   <div class="metrics">
     <% var cards = [
+      { label: '在跟项目', value: ov.projectCount, unit: '个', tone: 'f' },
       { label: '记录周数', value: s.weekCount, unit: '周', tone: 'a' },
       { label: '累计交付', value: s.total.items, unit: '项', tone: 'b' },
       { label: '主线提交', value: s.total.commits, unit: '次', tone: 'c' },
@@ -89,4 +98,23 @@
       </ul>
     </div>
   </div>
+
+  <% if (projects.length) { %>
+  <div class="panel">
+    <div class="panel-head">
+      <h2>项目对比</h2>
+      <a class="panel-more" href="<%- url_for('/projects/') %>">全部项目 →</a>
+    </div>
+    <div class="proj-rows">
+      <% var maxItems = 1; projects.forEach(function (p) { maxItems = Math.max(maxItems, p.items); }); %>
+      <% projects.forEach(function (p) { %>
+        <div class="proj-row">
+          <span class="proj-row-name"><%= p.name %></span>
+          <span class="proj-row-bar"><i style="width:<%= Math.round(p.items / maxItems * 100) %>%"></i></span>
+          <span class="proj-row-stats"><b><%= p.items %></b>交付 · <b><%= p.releases %></b>发版 · <b><%= p.days %></b>天</span>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
 </section>

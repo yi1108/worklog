@@ -1,0 +1,325 @@
+{
+ "days": [
+  {
+   "date": "2026-08-20",
+   "weekday": "周四",
+   "week": "2026-W34",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "任务平台",
+    "基建/域名",
+    "漫剧分镜",
+    "生成队列",
+    "科普成片",
+    "管理端",
+    "资产/分镜"
+   ],
+   "items": [
+    {
+     "module": "基建/域名",
+     "text": "绑定 www.printfilm.com、admin.printfilm.com HTTPS；梳理 nginx/CORS",
+     "commit": "发版热修（当日 nginx）",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "任务平台",
+     "text": "分镜生成任务平台重构：submit→poll、用户并发、序列批次失败联动",
+     "commit": "5ff7147 / 6cd15ab",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "管理端",
+     "text": "系统设置（OSS/支付）、任务中心详情、模板网格与分类筛选",
+     "commit": "4dc439b",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "漫剧分镜",
+     "text": "删除导入分镜板；尾帧衔接可开关默认关；全部生成跳过未改动已成片镜",
+     "commit": "b0632d1",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "科普成片",
+     "text": "文泉驿 CJK 字体 + FRAMECUT_FONT；字幕方框字体修复",
+     "commit": "发版包（后并入 8a36596）",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "资产/分镜",
+     "text": "角色 seed 防并发与同名合并；AI 分镜挂接道具/素材",
+     "commit": "发版包（后并入 8a36596）",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "生成队列",
+     "text": "重新生成被误判「跳过重复」取消 → 修复；成片历史版本",
+     "commit": "发版包（后并入 4011800）",
+     "shipped": true,
+     "status": "已上线"
+    }
+   ],
+   "commits": [
+    "`6cd15ab` 08-20 15:24 — Fix drama generation queue polling and deferred scheduling（调度修复）",
+    "`5ff7147` 08-20 15:26 — Backend: refactor drama generation task platform（平台重构）",
+    "`4dc439b` 08-20 15:27 — Admin: update UI for drama tasks（管理端 UI）",
+    "`b0632d1` 08-20 15:27 — Frontend: update drama storyboard UI（分镜前端）",
+    "`0ddc0af` 08-20 15:27 — Docs: add release note（文档）"
+   ],
+   "releases": [
+    "08-20 13:33 · 全量 · fe/admin/api — 任务平台 + 管理端设置/任务详情同步",
+    "08-20 13:44 · 热修 · nginx/证书 — 绑定 www/admin.printfilm.com HTTPS",
+    "08-20 14:44 · 全量 · fe/admin/api — 分镜流程：去导入宫格、尾帧开关、智能全部生成",
+    "08-20 18:33 · 全量 · fe/admin/api/字体 — 科普字幕 CJK 字体；分镜历史版本",
+    "08-20 19:24 · 全量 · api — 重新生成误「跳过重复」取消修复",
+    "08-20 19:40 · 全量 · fe/admin/api — 资产同名合并；分镜挂道具/素材"
+   ]
+  },
+  {
+   "date": "2026-08-21",
+   "weekday": "周五",
+   "week": "2026-W34",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "分镜数据",
+    "发布流程",
+    "失败体验",
+    "科普合成",
+    "账号安全",
+    "资产硬化"
+   ],
+   "items": [
+    {
+     "module": "账号安全",
+     "text": "登录去演示预填；设置页改密码；项目风格卡片选择",
+     "commit": "8a36596",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "资产硬化",
+     "text": "seed/资产 harden；声音类不误作角色；素材入库策略调整",
+     "commit": "8a36596",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "分镜数据",
+     "text": "分镜按 id upsert；删除/重切作废旧 fragment_video；旧任务不可瞎重试",
+     "commit": "4011800（含当日热修）",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "失败体验",
+     "text": "队列错误中文化+建议；失败详情挖真人审核等根因；底部分镜失败感叹号；资产可换图",
+     "commit": "4011800",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "科普合成",
+     "text": "FFmpeg SIGTERM（signal 15）自动重试最多 3 次；错误短中文化",
+     "commit": "4011800",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "发布流程",
+     "text": "常规发布默认跳过 nginx/certbot（SETUP_NGINX / SETUP_TLS 按需）",
+     "commit": "docs/DEPLOY + 脚本",
+     "shipped": true,
+     "status": "已落地"
+    }
+   ],
+   "commits": [
+    "`8a36596` 08-21 11:08 — Harden drama seed/assets and ship login/security polish（+1865 / −255）",
+    "`5482711` 08-21 11:10 — Merge feature/printfilm-multi-product-ui into main（合并）",
+    "`4011800` 08-21 18:35 — Improve drama fail UX and auto-retry FFmpeg SIGTERM compose（+1938 / −306）",
+    "`47ddba6` 08-21 — Add unified feed publish flow for kepu and drama works（作品发布流）"
+   ],
+   "releases": [
+    "08-21 09:35 · 全量 · fe/admin/api — 昨日未成包改动汇总上线",
+    "08-21 09:40 · 流程 · deploy — 常规发布默认跳过 nginx/certbot",
+    "08-21 11:01 · 全量 · fe/admin/api — 风格卡片、改密码、seed 优化",
+    "08-21 11:06 · 全量 · fe/admin — 登录去演示预填",
+    "08-21 17:00 · 全量 · fe/admin/api — 分镜 upsert + 作废旧 fragment_video",
+    "08-21 17:16 · 全量 · fe/admin/api — 队列错误中文化 + 任务详情",
+    "08-21 17:27 · 全量 · fe/admin/api — 资产详情换图；失败感叹号与根因",
+    "08-21 17:38 · 全量 · fe/admin/api — 失败优先展示真人审核等真实根因",
+    "08-21 18:26 · 全量 · fe/admin/api — FFmpeg SIGTERM 自动重试"
+   ]
+  },
+  {
+   "date": "2026-08-24",
+   "weekday": "周一",
+   "week": "2026-W35",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "全片合成",
+    "分镜生成",
+    "画幅修复",
+    "队列 UX"
+   ],
+   "items": [
+    {
+     "module": "分镜生成",
+     "text": "replace_existing_video 加固；分集输出规格、字幕方式、字幕板、客户端全片拼接上线",
+     "commit": "588e539",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "画幅修复",
+     "text": "UI 9:16 出横屏：i2v 静帧按画幅；缺省 9:16；再改为 reference_image + 显式 ratio",
+     "commit": "588e539 → aa9bdb1",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "队列 UX",
+     "text": "「生成中」点详情误显历史「跳过重复」→ 进行中只显示任务进度",
+     "commit": "aa9bdb1",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "全片合成",
+     "text": "浏览器无损拼 HEVC hvcC 不一致时，自动回退服务端 ffmpeg 统一重编码拼接",
+     "commit": "aa9bdb1",
+     "shipped": true,
+     "status": "已上线"
+    }
+   ],
+   "commits": [
+    "`588e539` 08-24 18:42 — Fix drama portrait video i2v fallback and ship subtitle/output settings（+2543 / −166）",
+    "`d01ccef` 08-24 — Add PRINTFILM desktop shell with local FFmpeg compose（桌面端壳）"
+   ],
+   "releases": [
+    "08-24 16:36 · 全量 · fe/admin/api — 重新生成加固；输出规格/字幕/拼接包",
+    "08-24 18:38 · 全量 · fe/admin/api — i2v 静帧按 9:16；缺省竖屏",
+    "08-24 18:59 · 全量 · fe/admin/api — reference_image+ratio；队列详情进度",
+    "08-24 19:08 · 全量 · fe/admin/api — 全片 HEVC 不一致→服务端拼接"
+   ]
+  },
+  {
+   "date": "2026-08-25",
+   "weekday": "周二",
+   "week": "2026-W35",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "Agent Skill"
+   ],
+   "items": [
+    {
+     "module": "Agent Skill",
+     "text": "去掉 SKILL.md 上传说明提示；Skill 支持预览全文、下载 .md",
+     "commit": "已部署，待 commit",
+     "shipped": true,
+     "status": "已上线"
+    }
+   ],
+   "commits": [
+    "`aa9bdb1` 08-25 10:28 — Fix Seedance portrait i2v ratio and episode compose codec mismatch（+445 / −42）"
+   ],
+   "releases": [
+    "08-25 10:43 · 全量 · fe/admin/api — Skill 预览/下载；去掉上传提示"
+   ]
+  }
+ ],
+ "projects": [
+  {
+   "name": "PRINTFILM",
+   "days": 4,
+   "items": 18,
+   "commits": 12,
+   "releases": 20,
+   "modules": [
+    {
+     "name": "Agent Skill",
+     "count": 1
+    },
+    {
+     "name": "任务平台",
+     "count": 1
+    },
+    {
+     "name": "全片合成",
+     "count": 1
+    },
+    {
+     "name": "分镜数据",
+     "count": 1
+    },
+    {
+     "name": "分镜生成",
+     "count": 1
+    },
+    {
+     "name": "发布流程",
+     "count": 1
+    },
+    {
+     "name": "基建/域名",
+     "count": 1
+    },
+    {
+     "name": "失败体验",
+     "count": 1
+    },
+    {
+     "name": "漫剧分镜",
+     "count": 1
+    },
+    {
+     "name": "生成队列",
+     "count": 1
+    },
+    {
+     "name": "画幅修复",
+     "count": 1
+    },
+    {
+     "name": "科普合成",
+     "count": 1
+    },
+    {
+     "name": "科普成片",
+     "count": 1
+    },
+    {
+     "name": "管理端",
+     "count": 1
+    },
+    {
+     "name": "账号安全",
+     "count": 1
+    },
+    {
+     "name": "资产/分镜",
+     "count": 1
+    },
+    {
+     "name": "资产硬化",
+     "count": 1
+    },
+    {
+     "name": "队列 UX",
+     "count": 1
+    }
+   ],
+   "first": "2026-08-20",
+   "last": "2026-08-25"
+  }
+ ]
+}

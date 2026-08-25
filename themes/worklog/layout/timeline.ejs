@@ -1,0 +1,71 @@
+<% var dash = theme.dashboard || {};
+   var days = worklog_timeline(dash.timeline_days || 0);
+   var projects = worklog_projects(); %>
+<section class="dash wrap">
+  <div class="dash-head">
+    <h1>工作时间线</h1>
+    <p class="dash-sub">逐日展开交付、提交与发版，共 <strong><%= days.length %></strong> 个记录日</p>
+  </div>
+
+  <% if (projects.length > 1) { %>
+  <div class="board-toolbar" data-board-toolbar>
+    <div class="filter-group" role="group" aria-label="按项目筛选">
+      <span class="filter-label">项目</span>
+      <button class="chip is-on" type="button" data-filter-project="">全部</button>
+      <% projects.forEach(function (p) { %>
+        <button class="chip" type="button" data-filter-project="<%= p.name %>"><%= p.name %></button>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
+
+  <ol class="timeline" data-board>
+    <% days.forEach(function (d) { %>
+      <li class="tl-day" data-card data-project="<%= d.project %>" data-ship="<%= d.shipped ? 1 : 0 %>" data-text="">
+        <div class="tl-marker" aria-hidden="true"><i class="<%= d.shipped ? 'is-ship' : '' %>"></i></div>
+        <div class="tl-body">
+          <div class="tl-head">
+            <time class="tl-date" datetime="<%= d.date %>"><%= d.date %></time>
+            <span class="tl-weekday"><%= d.weekday %></span>
+            <span class="card-proj"><%= d.project %></span>
+            <span class="tl-week"><%= d.week %></span>
+            <span class="tl-counts">
+              <b><%= d.items.length %></b>交付
+              <b><%= d.commits.length %></b>提交
+              <b><%= d.releases.length %></b>发版
+            </span>
+          </div>
+          <% if (d.items.length) { %>
+            <ul class="tl-items">
+              <% d.items.forEach(function (it) { %>
+                <li>
+                  <span class="tl-mod"><%= it.module %></span>
+                  <span class="tl-text"><%= it.text %></span>
+                  <% if (it.shipped) { %><span class="pill pill-ship">已发版</span><% } %>
+                </li>
+              <% }); %>
+            </ul>
+          <% } %>
+          <% if (d.releases.length) { %>
+            <details class="tl-more">
+              <summary>发版记录 <%= d.releases.length %> 条</summary>
+              <ul class="tl-plain">
+                <% d.releases.forEach(function (r) { %><li><%= r %></li><% }); %>
+              </ul>
+            </details>
+          <% } %>
+          <% if (d.commits.length) { %>
+            <details class="tl-more">
+              <summary>Git 提交 <%= d.commits.length %> 条</summary>
+              <ul class="tl-plain">
+                <% d.commits.forEach(function (c) { %><li><%= c.replace(/`/g, '') %></li><% }); %>
+              </ul>
+            </details>
+          <% } %>
+        </div>
+      </li>
+    <% }); %>
+    <% if (!days.length) { %><li class="empty-block">暂无时间线数据</li><% } %>
+  </ol>
+  <p class="board-empty" data-board-empty hidden>没有符合条件的记录</p>
+</section>
