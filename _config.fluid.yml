@@ -1,0 +1,133 @@
+# Fluid 主题配置 —— 工作记录站
+# 文档: https://hexo.fluid-dev.com/docs/
+
+# 导航栏
+navbar:
+  blog_title: 工作记录
+  ground_color: '#2d3a4b'
+  menu:
+    - { key: home, link: /, icon: iconfont icon-home-fill }
+    - { key: archive, link: /archives/, icon: iconfont icon-archive-fill }
+    - { key: category, link: /categories/, icon: iconfont icon-category-fill }
+    - { key: tag, link: /tags/, icon: iconfont icon-tags-fill }
+    - { key: about, link: /about/, icon: iconfont icon-user-fill }
+  search:
+    enable: true
+
+# 首页
+index:
+  banner_img: /img/default.png
+  banner_img_height: 70
+  banner_mask_alpha: 0.5
+  slogan:
+    enable: true
+    text: 每周把交付、发版与复盘沉淀成可检索的记录
+    api:
+      enable: false
+  post_url_target: _self
+  post_meta:
+    date: true
+    category: true
+    tag: true
+
+# 文章页
+post:
+  banner_img: /img/default.png
+  banner_img_height: 60
+  banner_mask_alpha: 0.5
+  meta:
+    date:
+      enable: true
+      format: YYYY-MM-DD
+    wordcount:
+      enable: true
+    min2read:
+      enable: true
+    views:
+      enable: false
+  toc:
+    enable: true
+    placement: right
+    headingSelector: h1,h2,h3,h4
+    expandAll: false
+    scrollWhenClick: true
+  copyright:
+    enable: false
+  prev_next:
+    enable: true
+  comments:
+    enable: false
+
+# 归档页
+archive:
+  banner_img: /img/default.png
+  banner_img_height: 60
+  banner_mask_alpha: 0.5
+  subtitle: 全部工作记录
+
+# 分类页
+category:
+  banner_img: /img/default.png
+  banner_img_height: 60
+  banner_mask_alpha: 0.5
+  subtitle: 按类型浏览
+
+# 标签页
+tag:
+  banner_img: /img/default.png
+  banner_img_height: 60
+  banner_mask_alpha: 0.5
+  subtitle: 按标签浏览
+
+# 关于页
+about:
+  banner_img: /img/default.png
+  banner_img_height: 60
+  banner_mask_alpha: 0.5
+  subtitle: 关于这份记录
+  avatar: /img/avatar.png
+  name: yi
+  introduce: 研发工作记录，来源为 Obsidian 工作库自动同步
+  icons: []
+
+# 404
+page404:
+  banner_img: /img/default.png
+  banner_img_height: 60
+
+# 代码块
+code:
+  highlight:
+    enable: true
+    lib: highlightjs
+    highlightjs:
+      style: github gist
+      bg_color: true
+  copy_btn: true
+
+# 页脚
+footer:
+  content: '<span>由 Obsidian 工作库自动同步 · Hexo + Fluid</span>'
+
+# 全局字体与配色
+font:
+  font_size: 16px
+  code_font_size: 14px
+
+color:
+  body_bg_color: '#f5f6f7'
+  navbar_bg_color: '#2d3a4b'
+  navbar_text_color: '#ffffff'
+
+# 深色模式
+dark_mode:
+  enable: true
+  default: auto
+
+# 侧边栏返回顶部
+scroll_top_arrow:
+  enable: true
+
+# 懒加载
+lazyload:
+  enable: true
