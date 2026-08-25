@@ -12,7 +12,7 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
-url: https://worklog-yi1108.vercel.app
+url: https://worklog-site-opal.vercel.app
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
