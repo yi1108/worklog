@@ -80,4 +80,4 @@ exclude:
 ignore:
 
 # Extensions
-theme: worklog
+theme: redefine
