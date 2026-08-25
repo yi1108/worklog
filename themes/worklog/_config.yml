@@ -1,0 +1,19 @@
+# worklog 主题配置
+site_name: 工作记录
+site_desc: 研发交付、发版与复盘的按周沉淀
+
+# 导航
+nav:
+  - { text: 面板, url: / }
+  - { text: 周报, url: /categories/周报/ }
+  - { text: 归档, url: /archives/ }
+  - { text: 标签, url: /tags/ }
+  - { text: 关于, url: /about/ }
+
+# 面板设置
+dashboard:
+  recent_weeks: 8      # 趋势图展示最近多少周
+  recent_posts: 6      # 最近记录条数
+
+# 页脚
+footer_text: 由 Obsidian 工作库自动同步 · Hexo

@@ -1,0 +1,6 @@
+{
+  "name": "hexo-theme-worklog",
+  "version": "1.0.0",
+  "description": "面向研发工作记录的 Hexo 主题：指标面板 + 周报时间线",
+  "private": true
+}

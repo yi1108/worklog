@@ -1,0 +1,92 @@
+<% var s = worklog_stats(); var mods = worklog_modules(10); %>
+<section class="dash wrap">
+  <div class="dash-head">
+    <h1>工作面板</h1>
+    <% if (s.latest) { %>
+      <p class="dash-sub">最新周期 <strong><%= s.latest.week %></strong>（<%= s.latest.start %> ~ <%= s.latest.end %>）</p>
+    <% } else { %>
+      <p class="dash-sub">还没有周报数据</p>
+    <% } %>
+  </div>
+
+  <div class="metrics">
+    <% var cards = [
+      { label: '记录周数', value: s.weekCount, unit: '周', tone: 'a' },
+      { label: '累计交付', value: s.total.items, unit: '项', tone: 'b' },
+      { label: '主线提交', value: s.total.commits, unit: '次', tone: 'c' },
+      { label: '生产发版', value: s.total.releases, unit: '次', tone: 'd' },
+      { label: '日均交付', value: s.avgItemsPerDay, unit: '项/日', tone: 'e' }
+    ]; %>
+    <% cards.forEach(function (c) { %>
+      <div class="metric tone-<%= c.tone %>">
+        <span class="metric-label"><%= c.label %></span>
+        <span class="metric-value"><%= c.value %><em><%= c.unit %></em></span>
+      </div>
+    <% }); %>
+  </div>
+
+  <% if (s.weeklies.length) { %>
+  <div class="panel">
+    <div class="panel-head">
+      <h2>交付趋势</h2>
+      <span class="legend">
+        <i class="dot dot-items"></i>交付
+        <i class="dot dot-commits"></i>提交
+        <i class="dot dot-releases"></i>发版
+      </span>
+    </div>
+    <% var recent = s.weeklies.slice(-(theme.dashboard && theme.dashboard.recent_weeks || 8));
+       var peak = 1;
+       recent.forEach(function (w) { peak = Math.max(peak, w.items, w.commits, w.releases); }); %>
+    <div class="chart" role="img" aria-label="按周交付、提交与发版趋势">
+      <% recent.forEach(function (w) { %>
+        <div class="chart-col">
+          <div class="bars">
+            <span class="bar bar-items" style="height:<%= Math.round(w.items / peak * 100) %>%" title="交付 <%= w.items %> 项"></span>
+            <span class="bar bar-commits" style="height:<%= Math.round(w.commits / peak * 100) %>%" title="提交 <%= w.commits %> 次"></span>
+            <span class="bar bar-releases" style="height:<%= Math.round(w.releases / peak * 100) %>%" title="发版 <%= w.releases %> 次"></span>
+          </div>
+          <span class="chart-x"><%= String(w.week).replace(/^\d{4}-/, '') %></span>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
+
+  <div class="dash-grid">
+    <div class="panel">
+      <div class="panel-head"><h2>周报</h2></div>
+      <ul class="week-list">
+        <% s.weeklies.slice().reverse().forEach(function (w) { %>
+          <li>
+            <a class="week-link" href="<%- url_for(w.path) %>">
+              <span class="week-id"><%= w.week %></span>
+              <span class="week-range"><%= w.start %> ~ <%= w.end %></span>
+            </a>
+            <span class="week-stats">
+              <b><%= w.items %></b>交付
+              <b><%= w.commits %></b>提交
+              <b><%= w.releases %></b>发版
+            </span>
+          </li>
+        <% }); %>
+        <% if (!s.weeklies.length) { %><li class="empty">暂无周报</li><% } %>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>模块热度</h2></div>
+      <ul class="mod-list">
+        <% var top = mods.length ? mods[0].count : 1; %>
+        <% mods.forEach(function (m) { %>
+          <li>
+            <span class="mod-name" title="<%= m.name %>"><%= m.name %></span>
+            <span class="mod-bar"><i style="width:<%= Math.round(m.count / top * 100) %>%"></i></span>
+            <span class="mod-count"><%= m.count %></span>
+          </li>
+        <% }); %>
+        <% if (!mods.length) { %><li class="empty">暂无模块数据</li><% } %>
+      </ul>
+    </div>
+  </div>
+</section>
