@@ -337,3 +337,35 @@
 
 
 
+
+/* Footer 收敛：只保留版权行 + 淡显主题信息 */
+.footer .post-count {
+  display: none !important;
+}
+.footer [id*="busuanzi_container"] {
+  display: none !important;
+}
+.footer .lg\:absolute.lg\:right-\[20px\] {
+  display: none !important;
+}
+.footer .lg\:absolute.lg\:left-\[20px\] {
+  opacity: 0.4;
+  font-size: 0.7rem;
+  transition: opacity 0.2s ease;
+}
+.footer .lg\:absolute.lg\:left-\[20px\]:hover {
+  opacity: 0.85;
+}
+.footer .info-container {
+  padding: 0.6rem 0;
+}
+.footer .text-center {
+  padding: 0.2rem 0;
+}
+.footer .fa-heart {
+  display: none !important;
+}
+/* 隐藏运行时间整行 */
+.footer .info-container > div:has([id*="runtime_days"]) {
+  display: none !important;
+}
