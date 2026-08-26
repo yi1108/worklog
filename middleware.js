@@ -6,8 +6,28 @@ export const config = {
 };
 
 const COOKIE_NAME = 'worklog_auth';
-const PASSWORD = globalThis.process?.env?.PASSWORD || '2099';
 const SESSION_DAYS = 7;
+
+function getPassword() {
+  try {
+    return process.env.PASSWORD || '2099';
+  } catch (e) {
+    return '2099';
+  }
+}
+
+const PASSWORD = getPassword();
+
+function getCookie(request, name) {
+  // 手动解析 cookie header
+  const cookieHeader = request.headers.get('cookie') || '';
+  const cookies = cookieHeader.split(';').map(s => s.trim());
+  for (const c of cookies) {
+    const [k, v] = c.split('=');
+    if (k === name) return decodeURIComponent(v || '');
+  }
+  return undefined;
+}
 
 const loginPage = (showError) => `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -42,7 +62,7 @@ export default function handler(request) {
     const url = new URL(request.url);
 
     // 检查 cookie
-    const cookie = request.cookies.get(COOKIE_NAME)?.value;
+    const cookie = getCookie(request, COOKIE_NAME);
     if (cookie === PASSWORD) {
       return NextResponse.next();
     }
@@ -52,16 +72,15 @@ export default function handler(request) {
     if (pwd !== null) {
       if (pwd === PASSWORD) {
         const cleanUrl = new URL(url.origin + url.pathname);
+        // 保留其他非 pwd 参数
         url.searchParams.forEach((v, k) => {
           if (k !== 'pwd') cleanUrl.searchParams.set(k, v);
         });
         const response = NextResponse.redirect(cleanUrl.toString());
-        response.cookies.set(COOKIE_NAME, PASSWORD, {
-          maxAge: 60 * 60 * 24 * SESSION_DAYS,
-          path: '/',
-          httpOnly: true,
-          sameSite: 'lax',
-        });
+        // 设置 cookie
+        const maxAge = 60 * 60 * 24 * SESSION_DAYS;
+        response.headers.set('Set-Cookie',
+          `${COOKIE_NAME}=${encodeURIComponent(PASSWORD)}; Path=/; Max-Age=${maxAge}; HttpOnly; SameSite=Lax`);
         return response;
       } else {
         return new Response(loginPage(true), {
@@ -82,6 +101,9 @@ export default function handler(request) {
       },
     });
   } catch (e) {
-    return new Response('Error: ' + e.message, { status: 500 });
+    return new Response('Error: ' + e.message + '\n' + e.stack, {
+      status: 500,
+      headers: { 'Content-Type': 'text/plain' },
+    });
   }
 }
