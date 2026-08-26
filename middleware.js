@@ -8,25 +8,18 @@ export const config = {
 const COOKIE_NAME = 'worklog_auth';
 const SESSION_DAYS = 7;
 
-function getPassword() {
-  try {
-    return process.env.PASSWORD || '2099';
-  } catch (e) {
-    return '2099';
-  }
-}
-
-const PASSWORD = getPassword();
+const PASSWORD = (globalThis.process?.env?.PASSWORD) || '2099';
 
 function getCookie(request, name) {
-  // 手动解析 cookie header
   const cookieHeader = request.headers.get('cookie') || '';
   const cookies = cookieHeader.split(';').map(s => s.trim());
   for (const c of cookies) {
-    const [k, v] = c.split('=');
-    if (k === name) return decodeURIComponent(v || '');
+    const eq = c.indexOf('=');
+    if (eq > 0 && c.substring(0, eq).trim() === name) {
+      return decodeURIComponent(c.substring(eq + 1).trim());
+    }
   }
-  return undefined;
+  return null;
 }
 
 const loginPage = (showError) => `<!DOCTYPE html>
@@ -58,52 +51,51 @@ button:hover{background:#285ad8}
 </html>`;
 
 export default function handler(request) {
-  try {
-    const url = new URL(request.url);
+  const url = new URL(request.url);
 
-    // 检查 cookie
-    const cookie = getCookie(request, COOKIE_NAME);
-    if (cookie === PASSWORD) {
-      return NextResponse.next();
-    }
-
-    // 检查 URL 密码参数
-    const pwd = url.searchParams.get('pwd');
-    if (pwd !== null) {
-      if (pwd === PASSWORD) {
-        const cleanUrl = new URL(url.origin + url.pathname);
-        // 保留其他非 pwd 参数
-        url.searchParams.forEach((v, k) => {
-          if (k !== 'pwd') cleanUrl.searchParams.set(k, v);
-        });
-        const response = NextResponse.redirect(cleanUrl.toString());
-        // 设置 cookie
-        const maxAge = 60 * 60 * 24 * SESSION_DAYS;
-        response.headers.set('Set-Cookie',
-          `${COOKIE_NAME}=${encodeURIComponent(PASSWORD)}; Path=/; Max-Age=${maxAge}; HttpOnly; SameSite=Lax`);
-        return response;
-      } else {
-        return new Response(loginPage(true), {
-          status: 200,
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
-            'Cache-Control': 'no-store',
-          },
-        });
-      }
-    }
-
-    return new Response(loginPage(false), {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'no-store',
-      },
-    });
-  } catch (e) {
-    return new Response('Error: ' + e.message + '\n' + e.stack, {
-      status: 500,
-      headers: { 'Content-Type': 'text/plain' },
-    });
+  // 静态资源直接放行（CSS/JS/图片/字体），避免登录页样式加载不出来
+  const path = url.pathname;
+  if (/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|map)$/.test(path)) {
+    return fetch(request);
   }
+
+  // 检查 cookie
+  const cookie = getCookie(request, COOKIE_NAME);
+  if (cookie === PASSWORD) {
+    return fetch(request);
+  }
+
+  // 检查 URL 密码参数
+  const pwd = url.searchParams.get('pwd');
+  if (pwd !== null) {
+    if (pwd === PASSWORD) {
+      const cleanUrl = new URL(url.origin + url.pathname);
+      url.searchParams.forEach((v, k) => {
+        if (k !== 'pwd') cleanUrl.searchParams.set(k, v);
+      });
+      const maxAge = 60 * 60 * 24 * SESSION_DAYS;
+      return Response.redirect(cleanUrl.toString(), 302, {
+        headers: {
+          'Set-Cookie': `${COOKIE_NAME}=${encodeURIComponent(PASSWORD)}; Path=/; Max-Age=${maxAge}; HttpOnly; SameSite=Lax`,
+        },
+      });
+    } else {
+      return new Response(loginPage(true), {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': 'no-store',
+        },
+      });
+    }
+  }
+
+  // 默认显示登录页
+  return new Response(loginPage(false), {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
 }
