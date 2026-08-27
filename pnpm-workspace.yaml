@@ -1,0 +1,3 @@
+# hexo-util 的安装脚本对本站构建无影响，明确禁止执行以免 pnpm install 返回非零码。
+allowBuilds:
+  hexo-util: false
