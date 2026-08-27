@@ -226,7 +226,7 @@
      "text": "支付通道问题排查与修复",
      "commit": "",
      "shipped": false,
-     "status": "进行中"
+     "status": "已完成"
     }
    ],
    "commits": [],
@@ -240,6 +240,8 @@
    "shipped": true,
    "modules": [
     "Agent Skill",
+    "分镜重生",
+    "音色合成",
     "功能完善",
     "基建部署",
     "合规备案",
@@ -253,6 +255,20 @@
      "module": "Agent Skill",
      "text": "去掉 SKILL.md 上传说明提示；Skill 支持预览全文、下载 .md",
      "commit": "已部署，待 commit",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "分镜重生",
+     "text": "「AI 重新分镜」force=true 未清空旧分镜：正确传参并关闭 preserve_protected",
+     "commit": "88af93a",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "音色合成",
+     "text": "参考音频过短导致 Seedance 报错：试听句加长、落盘 ≥2s/≤15s、提交前自动重合成",
+     "commit": "29b01ad",
      "shipped": true,
      "status": "已上线"
     },
@@ -300,17 +316,24 @@
     }
    ],
    "commits": [
-    "`aa9bdb1` 08-25 10:28 — Fix Seedance portrait i2v ratio and episode compose codec mismatch（+445 / −42）"
+    "`aa9bdb1` 08-25 10:28 — Fix Seedance portrait i2v ratio and episode compose codec mismatch（+445 / −42）",
+    "`1780ff9` 08-25 14:18 — Add Skill preview/download and drop upload hint copy（+234 / −29）",
+    "`88af93a` 08-25 17:22 — Fix AI re-plan to clear old episode fragments when force=true（+67 / −20）",
+    "`8098e8e` 08-25 17:27 — Docs: record 2026-08-25 Hangzhou release for AI re-plan force clear（+15）",
+    "`29b01ad` 08-25 18:56 — Fix drama video auto-cancel and short reference-audio rejection（+531 / −297）"
    ],
    "releases": [
-    "08-25 10:43 · 全量 · fe/admin/api — Skill 预览/下载；去掉上传提示"
+    "08-25 10:43 · 全量 · fe/admin/api — Skill 预览/下载；去掉上传提示",
+    "08-25 17:26 · 全量 · fe/admin/api — AI 重新分镜 force 清空旧分镜",
+    "08-25 18:16 · 全量 · fe/admin/api — 分镜视频入队被误判「已取消」修复；取消态显示真实错误",
+    "08-25 18:29 · 全量 · fe/admin/api — 参考音频过短自动重生成；Seedance 音频报错中文化"
    ]
   },
   {
    "date": "2026-08-25",
    "weekday": "周二",
    "week": "2026-W35",
-   "project": "GITVV",
+   "project": "GitVV",
    "shipped": false,
    "modules": [
     "合规备案",
@@ -334,19 +357,118 @@
    ],
    "commits": [],
    "releases": []
+  },
+  {
+   "date": "2026-08-26",
+   "weekday": "周三",
+   "week": "2026-W35",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "分集资产",
+    "分镜脚本",
+    "后期字幕",
+    "版本历史",
+    "短剧流程",
+    "AI能力"
+   ],
+   "items": [
+    {
+     "module": "分集资产",
+     "text": "分集侧栏角色/场景/道具支持「新建」与「导入」",
+     "commit": "4433856",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "分镜脚本",
+     "text": "关联 chip 支持 Backspace/Delete 删除并同步 asset_ids；「删除资产」入口收回，改为「取消关联」",
+     "commit": "4433856",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "后期字幕",
+     "text": "禁止 Seedance 画面烧录字幕、保留口播，字幕板导出 SRT 由后期合成",
+     "commit": "8b39ade",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "版本历史",
+     "text": "分镜成片独立落盘并复制 hist，修复同路径覆盖只剩当前/v1",
+     "commit": "8b39ade",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "AI能力",
+     "text": "渠道 models 变更自动同步逻辑模型与默认文本模型；线上文字上游切 DeepSeek v4-pro，失败回落同能力模型",
+     "commit": "c9c3b0e",
+     "shipped": true,
+     "status": "已上线"
+    },
+    {
+     "module": "短剧流程",
+     "text": "短剧工作台拆 prep/episodes，四阶段流程 + 分镜与视觉就绪门禁；长脚本建项目加固",
+     "commit": "f80d5a5 → a9ec898",
+     "shipped": false,
+     "status": "进行中"
+    }
+   ],
+   "commits": [
+    "`4433856` 08-26 11:12 — Add episode asset create/import and fix mention unlink UX（+438 / −15）",
+    "`f80d5a5` 08-26 14:51 — Add drama episode four-stage flow and harden long-script project create（+2675 / −339）",
+    "`8b39ade` 08-26 15:14 — Fix post-subtitle burn-in and fragment video version history（+301 / −55）",
+    "`f4964bb` 08-26 15:19 — Docs: record Hangzhou release for subtitle and version history fixes（+15）",
+    "`a581edd` 08-26 15:23 — Docs: mark Hangzhou release verification complete（+2 / −3）",
+    "`41a919a` 08-26 15:28 — Merge main: post-subtitle burn fix and fragment video version history",
+    "`a9ec898` 08-26 18:40 — Refine drama workflow into prep/episodes workspace with storyboard and visual-ready gates（+2291 / −342）",
+    "`c9c3b0e` 08-26 18:55 — Support any OpenAI-compatible text model via channel sync（+197 / −49）"
+   ],
+   "releases": [
+    "08-26 10:50 · 全量 · fe/admin/api — 分集侧栏角色/场景/道具新建与导入",
+    "08-26 10:57 · 全量 · fe/admin/api — 分镜脚本关联标签可删除；同步 asset_ids",
+    "08-26 11:01 · 全量 · fe/admin/api — 取消关联与永久删除拆分，去掉分集页删除入口",
+    "08-26 15:20 · 全量 · fe/admin/api — 后期字幕禁烧录 + 分镜版本历史",
+    "08-26 18:56 · 全量 · fe/admin/api/env — 通用 OpenAI 兼容文字模型，线上切 DeepSeek v4-pro"
+   ]
+  },
+  {
+   "date": "2026-08-26",
+   "weekday": "周三",
+   "week": "2026-W35",
+   "project": "GitVV",
+   "shipped": true,
+   "modules": [
+    "合规备案"
+   ],
+   "items": [
+    {
+     "module": "GitVV",
+     "text": "建立发版记录规范并完成备案合规线上发布（buy.gitcc获号、协议勾选、实名/违禁）",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": [
+    "08-26 · 全量 · fe/api — 备案合规改造上线 www.gitvv.com：关闭自助注册引导 buy.gitcc、协议勾选、人工实名、违禁词分级处置"
+   ]
   }
  ],
  "projects": [
   {
    "name": "PRINTFILM",
-   "days": 4,
-   "items": 24,
-   "commits": 12,
-   "releases": 20,
+   "days": 5,
+   "items": 32,
+   "commits": 24,
+   "releases": 28,
    "modules": [
     {
      "name": "AI能力",
-     "count": 1
+     "count": 2
     },
     {
      "name": "Agent Skill",
@@ -366,6 +488,18 @@
     },
     {
      "name": "分镜生成",
+     "count": 1
+    },
+    {
+     "name": "分镜脚本",
+     "count": 1
+    },
+    {
+     "name": "分镜重生",
+     "count": 1
+    },
+    {
+     "name": "分集资产",
      "count": 1
     },
     {
@@ -389,6 +523,10 @@
      "count": 1
     },
     {
+     "name": "后期字幕",
+     "count": 1
+    },
+    {
      "name": "基建/域名",
      "count": 1
     },
@@ -405,11 +543,19 @@
      "count": 1
     },
     {
+     "name": "版本历史",
+     "count": 1
+    },
+    {
      "name": "生成队列",
      "count": 1
     },
     {
      "name": "画幅修复",
+     "count": 1
+    },
+    {
+     "name": "短剧流程",
      "count": 1
     },
     {
@@ -439,18 +585,26 @@
     {
      "name": "队列 UX",
      "count": 1
+    },
+    {
+     "name": "音色合成",
+     "count": 1
     }
    ],
    "first": "2026-08-20",
-   "last": "2026-08-25"
+   "last": "2026-08-26"
   },
   {
-   "name": "GITVV",
-   "days": 1,
-   "items": 2,
+   "name": "GitVV",
+   "days": 2,
+   "items": 3,
    "commits": 0,
-   "releases": 0,
+   "releases": 1,
    "modules": [
+    {
+     "name": "GitVV",
+     "count": 1
+    },
     {
      "name": "合规备案",
      "count": 1
@@ -461,7 +615,7 @@
     }
    ],
    "first": "2026-08-25",
-   "last": "2026-08-25"
+   "last": "2026-08-26"
   },
   {
    "name": "BuyCC",
