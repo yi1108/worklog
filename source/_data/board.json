@@ -336,23 +336,15 @@
    "project": "GitVV",
    "shipped": false,
    "modules": [
-    "合规备案",
-    "用户体系"
+    "备案资料"
    ],
    "items": [
     {
-     "module": "合规备案",
-     "text": "大模型备案 legal_config 接入、内容合规网关开发",
+     "module": "备案资料",
+     "text": "填写《德沛》备案信息采集表：服务方式、注册认证、适用人群、个人信息收集与同意、未实名弹窗、违禁词处置等 8 项口径",
      "commit": "",
      "shipped": false,
-     "status": "进行中"
-    },
-    {
-     "module": "用户体系",
-     "text": "登录页重构、隐私页、站点配置管理端",
-     "commit": "",
-     "shipped": false,
-     "status": "进行中"
+     "status": "已完成"
     }
    ],
    "commits": [],
@@ -597,7 +589,7 @@
   {
    "name": "GitVV",
    "days": 2,
-   "items": 3,
+   "items": 2,
    "commits": 0,
    "releases": 1,
    "modules": [
@@ -606,11 +598,7 @@
      "count": 1
     },
     {
-     "name": "合规备案",
-     "count": 1
-    },
-    {
-     "name": "用户体系",
+     "name": "备案资料",
      "count": 1
     }
    ],
