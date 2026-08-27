@@ -82,19 +82,5 @@ ignore:
 # Extensions
 theme: redefine
 
-# ==========================================
-# hexo-blog-encrypt 文章加密
-# ==========================================
-encrypt:
-  # 全局默认密码（所有文章共用）
-  password: 2099
-  # 提示文字
-  abstract: 已加密，请输入密码访问
-  message: 请输入访问密码
-  wrong_pass_message: 密码错误，请重试
-  # 记住密码
-  autoSave: true
-  # 加密主题
-  theme: default
-  # 静默模式（不输出加密日志）
-  silent: false
+# 访问控制由 Vercel Edge Middleware（middleware.js）统一处理，
+# 不再逐篇使用 hexo-blog-encrypt 加密。
