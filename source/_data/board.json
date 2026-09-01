@@ -475,7 +475,9 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`888de17` 08-27 17:16 — Simplify drama flow to name-only create, full-script prep, and storyboard（feature/long-script-input-steps）"
+   ],
    "releases": []
   },
   {
@@ -496,7 +498,9 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`d980c27` 08-28 14:50 — chore: move OSS/EPAY secrets to local-only config（+16 / −12）"
+   ],
    "releases": []
   },
   {
@@ -504,7 +508,7 @@
    "weekday": "周五",
    "week": "2026-W36",
    "project": "玉丹",
-   "shipped": false,
+   "shipped": true,
    "modules": [
     "物流查询",
     "对账同步"
@@ -525,7 +529,10 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`ea62341` 08-28 14:12 — fix: 物流仅余额不足切极数据，并收紧批量刷新与统计筛选（+85 / −41）",
+    "`17d3791` 08-28 14:36 — feat: 珊瑚/鑫云定时同步线上退款并固定拉单为已支付（+424 / −80）"
+   ],
    "releases": []
   },
   {
@@ -594,7 +601,14 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`e24c1f0` 08-31 17:03 — refactor(billing): extract TaskRun freeze/settle into billing package（+1879 / −573）",
+    "`735d67a` 08-31 17:03 — test(billing): add integration tests for TaskRun billing（+590）",
+    "`f48460f` 08-31 17:03 — feat(billing): charge all LLM paths and harden drama task billing（+870 / −384）",
+    "`ac2ae84` 08-31 17:04 — feat(admin): usage 明细, billing tab, and task type labels（+308 / −12）",
+    "`bd62918` 08-31 17:04 — feat(frontend): billing 402 UX, gen queue fixes, and recharge prompts（+522 / −128）",
+    "`9fcc280` 08-31 17:04 — docs: update billing guide, deploy notes, and 2026-08-31 release（+287 / −11）"
+   ],
    "releases": [
     "08-31 09:56 · 全量 · fe/admin/api — 统一任务计费模块上线（pipeline.py 语法错热修一次）",
     "08-31 10:10 · 全量 · fe/admin/api — 风格配置页竖屏预览与画幅跟随",
@@ -655,7 +669,14 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`76c13c5` 09-01 11:10 — feat(admin-api): aggregate dashboard usage and project billing detail（+902 / −50）",
+    "`29ef51a` 09-01 11:11 — feat(admin): show usage costs, project detail drawers, and usage tab deep-link（+704 / −73）",
+    "`250310a` 09-01 11:11 — feat(admin): add video channel presets and capability badges in model routing（+371 / −109）",
+    "`4428c53` 09-01 11:11 — fix(frontend): rename one-click generate copy and temporarily hide header CTA（+43 / −39）",
+    "`b10da0b` 09-01 11:11 — docs: record 2026-09-01 Hangzhou release for admin stats and routing UI（+17）",
+    "`6b4d021` 09-01 11:11 — docs(reports): add video billing evidence package for 2026-08-31 analysis（+6900）"
+   ],
    "releases": [
     "09-01 11:08 · 全量 · fe/admin/api — 管理端仪表盘修复 + 视频渠道 UI（health 中 video 模型为 doubao-seedance-2-5-260628）"
    ]
@@ -665,7 +686,7 @@
    "weekday": "周二",
    "week": "2026-W36",
    "project": "玉丹",
-   "shipped": false,
+   "shipped": true,
    "modules": [
     "线上部署"
    ],
@@ -678,7 +699,9 @@
      "status": "已上线"
     }
    ],
-   "commits": [],
+   "commits": [
+    "`51d8b78` 09-01 16:01 — fix: 一号通额度用尽时 fallback 切极数据，并完善线上部署脚本（+86 / −12）"
+   ],
    "releases": []
   }
  ],
@@ -687,7 +710,7 @@
    "name": "PRINTFILM",
    "days": 9,
    "items": 47,
-   "commits": 24,
+   "commits": 38,
    "releases": 36,
    "modules": [
     {
@@ -874,7 +897,7 @@
    "name": "玉丹",
    "days": 2,
    "items": 3,
-   "commits": 0,
+   "commits": 3,
    "releases": 0,
    "modules": [
     {
