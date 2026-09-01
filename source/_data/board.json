@@ -504,38 +504,6 @@
    "releases": []
   },
   {
-   "date": "2026-08-28",
-   "weekday": "周五",
-   "week": "2026-W36",
-   "project": "玉丹",
-   "shipped": true,
-   "modules": [
-    "物流查询",
-    "对账同步"
-   ],
-   "items": [
-    {
-     "module": "物流查询",
-     "text": "一号通仅余额不足时才切极数据，收紧批量刷新与统计筛选",
-     "commit": "",
-     "shipped": false,
-     "status": "已上线"
-    },
-    {
-     "module": "对账同步",
-     "text": "珊瑚/鑫云定时同步线上退款，拉单固定为已支付，前端页面精简",
-     "commit": "",
-     "shipped": false,
-     "status": "已上线"
-    }
-   ],
-   "commits": [
-    "`ea62341` 08-28 14:12 — fix: 物流仅余额不足切极数据，并收紧批量刷新与统计筛选（+85 / −41）",
-    "`17d3791` 08-28 14:36 — feat: 珊瑚/鑫云定时同步线上退款并固定拉单为已支付（+424 / −80）"
-   ],
-   "releases": []
-  },
-  {
    "date": "2026-08-31",
    "weekday": "周一",
    "week": "2026-W36",
@@ -680,29 +648,6 @@
    "releases": [
     "09-01 11:08 · 全量 · fe/admin/api — 管理端仪表盘修复 + 视频渠道 UI（health 中 video 模型为 doubao-seedance-2-5-260628）"
    ]
-  },
-  {
-   "date": "2026-09-01",
-   "weekday": "周二",
-   "week": "2026-W36",
-   "project": "玉丹",
-   "shipped": true,
-   "modules": [
-    "线上部署"
-   ],
-   "items": [
-    {
-     "module": "线上部署",
-     "text": "一号通额度用尽也回落极数据，补 systemd 单元与 prod 部署脚本",
-     "commit": "",
-     "shipped": false,
-     "status": "已上线"
-    }
-   ],
-   "commits": [
-    "`51d8b78` 09-01 16:01 — fix: 一号通额度用尽时 fallback 切极数据，并完善线上部署脚本（+86 / −12）"
-   ],
-   "releases": []
   }
  ],
  "projects": [
@@ -891,29 +836,6 @@
     }
    ],
    "first": "2026-08-20",
-   "last": "2026-09-01"
-  },
-  {
-   "name": "玉丹",
-   "days": 2,
-   "items": 3,
-   "commits": 3,
-   "releases": 0,
-   "modules": [
-    {
-     "name": "对账同步",
-     "count": 1
-    },
-    {
-     "name": "物流查询",
-     "count": 1
-    },
-    {
-     "name": "线上部署",
-     "count": 1
-    }
-   ],
-   "first": "2026-08-28",
    "last": "2026-09-01"
   },
   {
