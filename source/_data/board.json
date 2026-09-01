@@ -448,18 +448,258 @@
    "releases": [
     "08-26 · 全量 · fe/api — 备案合规改造上线 www.gitvv.com：关闭自助注册引导 buy.gitcc、协议勾选、人工实名、违禁词分级处置"
    ]
+  },
+  {
+   "date": "2026-08-27",
+   "weekday": "周四",
+   "week": "2026-W35",
+   "project": "PRINTFILM",
+   "shipped": false,
+   "modules": [
+    "短剧流程",
+    "本机治理"
+   ],
+   "items": [
+    {
+     "module": "短剧流程",
+     "text": "建项目简化为只填名称，全剧本 prep 与分镜分步推进（feature/long-script-input-steps）",
+     "commit": "",
+     "shipped": false,
+     "status": "进行中"
+    },
+    {
+     "module": "本机治理",
+     "text": "清理构建产物/IDE 缓存/陈旧依赖，压缩 Docker WSL vhdx，确认 SMB1 已禁用",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": []
+  },
+  {
+   "date": "2026-08-28",
+   "weekday": "周五",
+   "week": "2026-W36",
+   "project": "PRINTFILM",
+   "shipped": false,
+   "modules": [
+    "密钥治理"
+   ],
+   "items": [
+    {
+     "module": "密钥治理",
+     "text": "OSS / 易支付密钥移出仓库，改由本地 secrets 注入，部署脚本不再留明文",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": []
+  },
+  {
+   "date": "2026-08-28",
+   "weekday": "周五",
+   "week": "2026-W36",
+   "project": "玉丹",
+   "shipped": false,
+   "modules": [
+    "物流查询",
+    "对账同步"
+   ],
+   "items": [
+    {
+     "module": "物流查询",
+     "text": "一号通仅余额不足时才切极数据，收紧批量刷新与统计筛选",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "对账同步",
+     "text": "珊瑚/鑫云定时同步线上退款，拉单固定为已支付，前端页面精简",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": []
+  },
+  {
+   "date": "2026-08-31",
+   "weekday": "周一",
+   "week": "2026-W36",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "任务计费",
+    "计费体验",
+    "管理端",
+    "支付修复",
+    "分镜稳定性",
+    "热修",
+    "风格配置"
+   ],
+   "items": [
+    {
+     "module": "任务计费",
+     "text": "TaskRun 预扣→记账→结算抽成独立 billing 包，覆盖全部 LLM 链路并补集成测试",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "计费体验",
+     "text": "余额不足全局 402 弹窗 + 各页「去充值」；资产生图入队前余额预检与排队态",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "管理端",
+     "text": "新增用量明细 Tab、任务详情计费信息、队列费用列与任务类型标签",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "支付修复",
+     "text": "易支付回调域名写错致已付未入账，改 https://www.printfilm.com 并手工补账 ¥100",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "分镜稳定性",
+     "text": "chat_storyboard 启用 json_object + 空响应重试，修 SCRIPTING 5% 解析失败",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "热修",
+     "text": "生图入队 commit=False 未提交致 TaskRun 回滚；清理 8/27 遗留 11 条僵尸排队任务",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "风格配置",
+     "text": "竖屏模板按真实比例预览，左右栏跟随输出画幅，三栏防横向溢出",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": [
+    "08-31 09:56 · 全量 · fe/admin/api — 统一任务计费模块上线（pipeline.py 语法错热修一次）",
+    "08-31 10:10 · 全量 · fe/admin/api — 风格配置页竖屏预览与画幅跟随",
+    "08-31 11:05 · 全量 · api — 分镜 LLM 空响应加固",
+    "08-31 14:35 · 热修 · env/fe — 易支付回调改 www 并补账",
+    "08-31 14:55 · SQL · api — 清理 8/27 僵尸分镜视频排队任务",
+    "08-31 15:05 · 全量 · fe/admin/api — 计费预检 + 生图排队态",
+    "08-31 15:12 · 热修 · api — 资产生图 TaskRun 未提交"
+   ]
+  },
+  {
+   "date": "2026-09-01",
+   "weekday": "周二",
+   "week": "2026-W36",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "管理端仪表盘",
+    "用量下钻",
+    "模型路由",
+    "视频计费取证",
+    "前台文案"
+   ],
+   "items": [
+    {
+     "module": "管理端仪表盘",
+     "text": "日趋势按方言分桶修 /api/admin/stats 500，展示上游成本，补 test_admin_stats",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "用量下钻",
+     "text": "项目详情抽屉 + 订单页 tab 深链，科普/漫剧用量含 TTS，区分已扣与预估",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "模型路由",
+     "text": "「添加视频渠道」预设、能力徽标与缺视频渠道提示",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "视频计费取证",
+     "text": "产出 8/26-8/27 视频计费取证包（明细 CSV/XLSX、图表、EVIDENCE 说明）",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "前台文案",
+     "text": "一键生成文案改名，顶部 CTA 暂时隐藏",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": [
+    "09-01 11:08 · 全量 · fe/admin/api — 管理端仪表盘修复 + 视频渠道 UI（health 中 video 模型为 doubao-seedance-2-5-260628）"
+   ]
+  },
+  {
+   "date": "2026-09-01",
+   "weekday": "周二",
+   "week": "2026-W36",
+   "project": "玉丹",
+   "shipped": false,
+   "modules": [
+    "线上部署"
+   ],
+   "items": [
+    {
+     "module": "线上部署",
+     "text": "一号通额度用尽也回落极数据，补 systemd 单元与 prod 部署脚本",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [],
+   "releases": []
   }
  ],
  "projects": [
   {
    "name": "PRINTFILM",
-   "days": 5,
-   "items": 32,
+   "days": 9,
+   "items": 47,
    "commits": 24,
-   "releases": 28,
+   "releases": 36,
    "modules": [
     {
      "name": "AI能力",
+     "count": 2
+    },
+    {
+     "name": "短剧流程",
+     "count": 2
+    },
+    {
+     "name": "管理端",
      "count": 2
     },
     {
@@ -468,6 +708,10 @@
     },
     {
      "name": "任务平台",
+     "count": 1
+    },
+    {
+     "name": "任务计费",
      "count": 1
     },
     {
@@ -483,6 +727,10 @@
      "count": 1
     },
     {
+     "name": "分镜稳定性",
+     "count": 1
+    },
+    {
      "name": "分镜脚本",
      "count": 1
     },
@@ -492,6 +740,10 @@
     },
     {
      "name": "分集资产",
+     "count": 1
+    },
+    {
+     "name": "前台文案",
      "count": 1
     },
     {
@@ -531,7 +783,27 @@
      "count": 1
     },
     {
+     "name": "密钥治理",
+     "count": 1
+    },
+    {
+     "name": "支付修复",
+     "count": 1
+    },
+    {
+     "name": "本机治理",
+     "count": 1
+    },
+    {
+     "name": "模型路由",
+     "count": 1
+    },
+    {
      "name": "漫剧分镜",
+     "count": 1
+    },
+    {
+     "name": "热修",
      "count": 1
     },
     {
@@ -543,11 +815,11 @@
      "count": 1
     },
     {
-     "name": "画幅修复",
+     "name": "用量下钻",
      "count": 1
     },
     {
-     "name": "短剧流程",
+     "name": "画幅修复",
      "count": 1
     },
     {
@@ -559,7 +831,15 @@
      "count": 1
     },
     {
-     "name": "管理端",
+     "name": "管理端仪表盘",
+     "count": 1
+    },
+    {
+     "name": "视频计费取证",
+     "count": 1
+    },
+    {
+     "name": "计费体验",
      "count": 1
     },
     {
@@ -581,10 +861,37 @@
     {
      "name": "音色合成",
      "count": 1
+    },
+    {
+     "name": "风格配置",
+     "count": 1
     }
    ],
    "first": "2026-08-20",
-   "last": "2026-08-26"
+   "last": "2026-09-01"
+  },
+  {
+   "name": "玉丹",
+   "days": 2,
+   "items": 3,
+   "commits": 0,
+   "releases": 0,
+   "modules": [
+    {
+     "name": "对账同步",
+     "count": 1
+    },
+    {
+     "name": "物流查询",
+     "count": 1
+    },
+    {
+     "name": "线上部署",
+     "count": 1
+    }
+   ],
+   "first": "2026-08-28",
+   "last": "2026-09-01"
   },
   {
    "name": "GitVV",
