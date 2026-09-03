@@ -648,15 +648,90 @@
    "releases": [
     "09-01 11:08 · 全量 · fe/admin/api — 管理端仪表盘修复 + 视频渠道 UI（health 中 video 模型为 doubao-seedance-2-5-260628）"
    ]
+  },
+  {
+   "date": "2026-09-02",
+   "weekday": "周三",
+   "week": "2026-W36",
+   "project": "PRINTFILM",
+   "shipped": true,
+   "modules": [
+    "财务模块",
+    "仪表盘改版",
+    "统计口径",
+    "评审修复",
+    "财务同步",
+    "登录页"
+   ],
+   "items": [
+    {
+     "module": "财务模块",
+     "text": "新增管理端财务列表页与侧栏入口，后端补日汇总聚合 API",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "仪表盘改版",
+     "text": "周期 KPI、领域/用户排行柱状图、布局收紧，修用户管理调用统计",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "统计口径",
+     "text": "/api/admin/stats days 参数归一化，能力分布按 billing_key 推导，非法 days 返 422",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "评审修复",
+     "text": "用户排行支持 cost/calls 指标，运维 Tab 独立 30 日数据，UsersPage 不再误用分页 total",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "财务同步",
+     "text": "补同步失败错误处理与合计毛利率",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    },
+    {
+     "module": "登录页",
+     "text": "统一各浏览器表单校验提示，修 Firefox 差异",
+     "commit": "",
+     "shipped": false,
+     "status": "已上线"
+    }
+   ],
+   "commits": [
+    "`5a5a922` 09-02 11:22 — fix(admin-api): normalize stats days query and derive capability buckets（+94 / −8）",
+    "`0b7b25f` 09-02 11:22 — feat(admin-api): add daily finance aggregation endpoint（+270）",
+    "`daf16ac` 09-02 11:22 — feat(admin): add finance list page and sidebar navigation（+190）",
+    "`83d5261` 09-02 11:37 — feat(admin): refine dashboard charts, user stats, and layout（+693 / −102）",
+    "`b29c154` 09-02 11:38 — fix(frontend): correct BillingAlertHost import paths for build（+2 / −2）",
+    "`9925c8f` 09-02 11:40 — docs: record 2026-09-02 Hangzhou release for admin dashboard and finance（+15）",
+    "`7460078` 09-02 17:09 — fix(admin-api): harden stats ranking, capability buckets, and finance sync（+127 / −28）",
+    "`d266335` 09-02 17:09 — fix(frontend): unify login form validation across browsers（+55 / −11）",
+    "`68722ef` 09-02 17:09 — fix(admin): dashboard filters, user stats, finance list, and ranking charts（+31 / −9）",
+    "`d6e098d` 09-02 17:11 — docs: record 2026-09-02 evening release for review fixes（+13）"
+   ],
+   "releases": [
+    "09-02 11:39 · 全量 · fe/admin/api — 管理端仪表盘改版 + 财务列表 + 统计口径修复",
+    "09-02 17:10 · 全量 · fe/admin/api — Code review 修复（排行指标、能力分桶、登录校验）"
+   ]
   }
  ],
  "projects": [
   {
    "name": "PRINTFILM",
-   "days": 9,
-   "items": 47,
-   "commits": 38,
-   "releases": 36,
+   "days": 10,
+   "items": 53,
+   "commits": 48,
+   "releases": 38,
    "modules": [
     {
      "name": "AI能力",
@@ -672,6 +747,10 @@
     },
     {
      "name": "Agent Skill",
+     "count": 1
+    },
+    {
+     "name": "仪表盘改版",
      "count": 1
     },
     {
@@ -791,6 +870,10 @@
      "count": 1
     },
     {
+     "name": "登录页",
+     "count": 1
+    },
+    {
      "name": "科普合成",
      "count": 1
     },
@@ -803,11 +886,27 @@
      "count": 1
     },
     {
+     "name": "统计口径",
+     "count": 1
+    },
+    {
      "name": "视频计费取证",
      "count": 1
     },
     {
      "name": "计费体验",
+     "count": 1
+    },
+    {
+     "name": "评审修复",
+     "count": 1
+    },
+    {
+     "name": "财务同步",
+     "count": 1
+    },
+    {
+     "name": "财务模块",
      "count": 1
     },
     {
@@ -836,7 +935,7 @@
     }
    ],
    "first": "2026-08-20",
-   "last": "2026-09-01"
+   "last": "2026-09-02"
   },
   {
    "name": "GitVV",
